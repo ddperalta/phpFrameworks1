@@ -1,0 +1,5 @@
+
+<small>Derechos reservados TecGurus<?php echo Date("Y");?> 
+
+</body>
+</html>
