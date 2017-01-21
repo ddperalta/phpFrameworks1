@@ -13,6 +13,16 @@
 			return $query->row_array();
 	   }
 	   
+	   public function set_productos(){
+		   $data=array(
+				'nombre'=>$this->input->post('nombre'),
+				'descripcion'=>$this->input->post('descripcion'),
+				'precio'=>$this->input->post('precio')
+		   );
+		   return $this->db->insert('productos',$data);
+	   }
+	   
 	   
    }
 
+//vista producto/success mensaje insertar, link a productos y link a create

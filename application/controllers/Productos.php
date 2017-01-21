@@ -28,5 +28,27 @@
 			$this->load->view('productos/view',$data);
 			$this->load->view('elements/footer',$data);
 		}
+		
+		public function create(){
+			$this->load->helper('form');
+			$this->load->library('form_validation');
+			$data['title']='Crear un Producto';
+			
+			$this->form_validation->set_rules('nombre','Nombre','required');
+			$this->form_validation->set_rules('precio','Precio','required');
+			
+			// Muestra el formulario por primera vez
+			if($this->form_validation->run()===FALSE){
+				$this->load->view('elements/header',$data);
+				$this->load->view('productos/create');
+				$this->load->view('elements/footer');				
+			}else{
+				//guarda datos usando el modelo
+				$this->productos_model->set_productos();
+				$this->load->view('elements/header',$data);
+				$this->load->view('productos/success');
+				$this->load->view('elements/footer');
+			}
+		}
 	}
 	
