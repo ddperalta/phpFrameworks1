@@ -32,4 +32,27 @@ class Productos extends CI_Controller {
     $this->load->view('productos/view', $data);
     $this->load->view('elements/footer');
   }
+
+  public function create() {
+    $this->load->helper('form');
+    $this->load->library('form_validation');
+
+    $data['title'] = 'Crear un producto';
+
+    $this->form_validation->set_rules('nombre', 'Nombre', 'required');
+    $this->form_validation->set_rules('precio', 'Precio', 'required');
+
+    if ($this->form_validation->run() === FALSE) {
+      // Muestra el formulario por primera vez
+      $this->load->view('elements/header', $data);
+      $this->load->view('productos/create');
+      $this->load->view('elements/footer');
+    } else {
+      // Guarda los datos usando el modelo
+      $this->productos_model->set_productos();
+      $this->load->view('elements/header', $data);
+      $this->load->view('productos/success');
+      $this->load->view('elements/footer');
+    }
+  }
 }

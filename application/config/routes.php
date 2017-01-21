@@ -54,5 +54,6 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['productos/index'] = 'productos/index';
+$route['productos/create'] = 'productos/create';
 $route['productos/(:any)'] = 'productos/view/$1';
 $route['productos'] = 'productos';
