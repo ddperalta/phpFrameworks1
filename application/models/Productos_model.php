@@ -1,7 +1,7 @@
-<? php
-   class Productos_model extends CI_Model{
-	   public function __construc(){
-		   //$this->load->database();
+<?php
+   class Productos_model extends CI_Model {
+	   public function __construct(){
+		   $this->load->database();
 	   }
 	   
 	   public function get_productos($id = false){

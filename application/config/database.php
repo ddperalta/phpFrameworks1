@@ -74,14 +74,14 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'dsn'	=> '',
-	'hostname' => '',
+	'dsn'	=> 'sqlite:C:/xampp/curso',
+	'hostname' => 'localhost',
 	'username' => '',
 	'password' => '',
-	'database' => './application/database/data.db',
-	'dbdriver' => 'sqlite3',
+	'database' => '',
+	'dbdriver' => 'pdo',
 	'dbprefix' => '',
-	'pconnect' => FALSE,
+	'pconnect' => TRUE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
 	'cache_on' => FALSE,
 	'cachedir' => '',
