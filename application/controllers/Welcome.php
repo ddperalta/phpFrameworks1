@@ -7,4 +7,10 @@ class Welcome extends CI_Controller {
 		$this->load->view('elements/header');
 		$this->load->view('elements/footer');
 	}
+
+	public function connection_test() {
+		$this->db = $this->load->database('default', TRUE);
+		$result_set = $this->db->query('SELECT * FROM tbl1');
+		print_r($result_set->result_array());
+	}
 }

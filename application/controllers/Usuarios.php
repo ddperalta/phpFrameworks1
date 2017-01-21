@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Usuarios_Controller extends CI_Controller {
+class Usuarios extends CI_Controller {
 	public function index()
 	{
 		$this->load->view('elements/header');
@@ -16,8 +16,8 @@ class Usuarios_Controller extends CI_Controller {
 		/**
 			view(<NOMBRE DE LA VISTA>, <ARREGLO CON VARIABLES>);
 		**/
-		$this->load->view('elements/header', $params); 
+		$this->load->view('elements/header', $params);
 		echo "<h1>LOGIN</h1>";
 		$this->load->view('elements/footer');
 	}
-} 
+}
