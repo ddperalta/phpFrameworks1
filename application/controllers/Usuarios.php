@@ -10,7 +10,7 @@ class Usuarios extends CI_Controller {
   // localhost/usuarios
   public function index() {
     $data['usuarios'] = $this->usuarios_model->get_usuarios();
-    $data['title'] = 'usuarios';
+    $data['title'] = 'Usuarios';
 
     $this->load->view('elements/header', $data);
     $this->load->view('usuarios/index', $data);
@@ -26,7 +26,7 @@ class Usuarios extends CI_Controller {
       show_404(); // muestra mensaje de error
     }
 
-    $data['title'] = $data['usuarios_item']['nombre'];
+    $data['title'] = $data['usuarios_item']['login']; //usuarios item es el nombre de la variable.
 
     $this->load->view('elements/header', $data);
     $this->load->view('usuarios/view', $data);
@@ -37,8 +37,10 @@ class Usuarios extends CI_Controller {
     $this->load->helper('form');
     $this->load->library('form_validation');
 
-    $data['title'] = 'Crear un Usuario';
+    $data['title'] = 'Crear un producto';
 
+    $this->form_validation->set_rules('login', 'login', 'required');
+    $this->form_validation->set_rules('password', 'password', 'required');
     if ($this->form_validation->run() === FALSE) {
       // Muestra el formulario por primera vez
       $this->load->view('elements/header', $data);
