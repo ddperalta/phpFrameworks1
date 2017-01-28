@@ -57,3 +57,8 @@ $route['productos/index'] = 'productos/index';
 $route['productos/create'] = 'productos/create';
 $route['productos/(:any)'] = 'productos/view/$1';
 $route['productos'] = 'productos';
+
+$route['usuarios/index'] = 'usuarios/index';
+$route['usuarios/create'] = 'usuarios/create';
+$route['usuarios/(:any)'] = 'usuarios/view/$1';
+$route['usuarios'] = 'usuarios';
