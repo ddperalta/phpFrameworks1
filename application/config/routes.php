@@ -58,4 +58,5 @@ $route['productos/create'] = 'productos/create';
 $route['productos/(:any)'] = 'productos/view/$1';
 $route['productos'] = 'productos';
 
+$route['(:any)'] = 'pages/view/$1';
 

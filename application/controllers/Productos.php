@@ -36,6 +36,7 @@
 			
 			$this->form_validation->set_rules('nombre','Nombre','required');
 			$this->form_validation->set_rules('precio','Precio','required');
+			$this->form_validation->set_rules('precio','Precio','decimal');
 			
 			// Muestra el formulario por primera vez
 			if($this->form_validation->run()===FALSE){
