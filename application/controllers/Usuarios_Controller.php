@@ -1,23 +1,55 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+class Usuarios extends CI_Controller {
+  public function __construct() {
+    parent::__construct();
+    $this->load->model('usuarios_model');
+    $this->load->helper('url_helper');
+  }
 
-class Usuarios_Controller extends CI_Controller {
-	public function index()
-	{
-		$this->load->view('elements/header');
-		echo "<h1>INDEX</h1>";
-		$this->load->view('elements/footer');
-	}
+  // Sirve la página principal de usuarios
+  // localhost/usuarios
+  public function index() {
+    $data['usuarios'] = $this->usuarios_model->get_usuarios();
+    $data['title'] = 'usuarios';
 
-	public function login() {
-		$params = Array(
-			"titulo" => "Login de algo"
-		);
-		/**
-			view(<NOMBRE DE LA VISTA>, <ARREGLO CON VARIABLES>);
-		**/
-		$this->load->view('elements/header', $params); 
-		echo "<h1>LOGIN</h1>";
-		$this->load->view('elements/footer');
-	}
-} 
+    $this->load->view('elements/header', $data);
+    $this->load->view('usuarios/index', $data);
+    $this->load->view('elements/footer');
+  }
+
+  // sirve el detalle de un producto
+  // localhost/usuarios/view/1
+  public function view($id = NULL) {
+    $data['usuarios_item'] = $this->usuarios_model->get_usuarios($id);
+
+    if (empty($data['usuarios_item'])) {
+      show_404(); // muestra mensaje de error
+    }
+
+    $data['title'] = $data['usuarios_item']['nombre'];
+
+    $this->load->view('elements/header', $data);
+    $this->load->view('usuarios/view', $data);
+    $this->load->view('elements/footer');
+  }
+
+  public function create() {
+    $this->load->helper('form');
+    $this->load->library('form_validation');
+
+    $data['title'] = 'Crear un Usuario';
+
+    if ($this->form_validation->run() === FALSE) {
+      // Muestra el formulario por primera vez
+      $this->load->view('elements/header', $data);
+      $this->load->view('usuarios/create');
+      $this->load->view('elements/footer');
+    } else {
+      // Guarda los datos usando el modelo
+      $this->usuarios_model->set_usuarios();
+      $this->load->view('elements/header', $data);
+      $this->load->view('usuarios/success');
+      $this->load->view('elements/footer');
+    }
+  }
+}
