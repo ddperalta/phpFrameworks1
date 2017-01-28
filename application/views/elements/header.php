@@ -16,4 +16,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <li class="pure-menu-item"><a href="<?php echo site_url('productos'); ?>" class="pure-menu-link">Productos</a></li>
               <li class="pure-menu-item"><a href="<?php echo site_url('pages/view/about'); ?>" class="pure-menu-link">Acerca de</a></li>
           </ul>
+		  
 </div>
