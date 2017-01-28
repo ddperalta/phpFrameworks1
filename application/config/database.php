@@ -74,12 +74,12 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'dsn'	=> 'sqlite:/Users/enrique.munguia/test',
+	'dsn'	=> '',
 	'hostname' => 'localhost',
-	'username' => '',
+	'username' => 'root',
 	'password' => '',
-	'database' => '',
-	'dbdriver' => 'pdo',
+	'database' => 'tutorialci',
+	'dbdriver' => 'MySQLi',
 	'dbprefix' => '',
 	'pconnect' => TRUE,
 	'db_debug' => (ENVIRONMENT !== 'production'),

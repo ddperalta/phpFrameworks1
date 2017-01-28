@@ -5,5 +5,5 @@
   <div class="main">
     <?php echo $productos_item['descripcion']; ?>
   </div>
-  <p><a class="pure-button pure-button-primary" href="<?php echo site_url('productos/'.$productos_item['id']); ?>">Ver Producto</a></p>
+  <p><a class="pure-button pure-button-primary" href="<?php echo site_url('productos/'.$productos_item['idproductos']); ?>">Ver Producto</a></p>
 <?php endforeach; ?>

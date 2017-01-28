@@ -11,7 +11,7 @@ class Productos_model extends CI_Model {
       return $query->result_array();
     }
 
-    $query = $this->db->get_where('productos', array('id' => $id));
+    $query = $this->db->get_where('productos', array('idproductos' => $id));
     return $query->row_array(); // regresa un registro
   }
 
