@@ -48,4 +48,30 @@
 				$this->load->view('elements/footer');
 			}
 		}
+		
+		public function login(){
+			//1 modelo usuario y pass, salida true o false
+			//2 vista - pedir usuario y pass en formulario
+			//3 controlador - llame vista login y cuando traiga datos lo detecte y llame modelo
+			$this->load->helper('form');
+			$this->load->library('form_validation');
+			$data['title']='Logear un Usuario';
+			$this->form_validation->set_rules('login','login','required');
+			$this->form_validation->set_rules('pass','pass','required');
+			// Muestra el formulario por primera vez
+			if($this->form_validation->run()===FALSE){
+				$this->load->view('elements/header',$data);
+				$this->load->view('usuarios/login');
+				$this->load->view('elements/footer');				
+			}else{
+				//guarda datos usando el modelo
+				$resultado=$this->usuarios_model->validar_login();
+				if ($resultado){
+				$this->load->view('elements/header',$data);
+				$this->load->view('usuarios/success');
+				$this->load->view('elements/footer');
+				}
+			}
+		}
+		
 	}
