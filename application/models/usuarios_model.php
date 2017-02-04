@@ -21,6 +21,7 @@
 		   return $this->db->insert('USUARIO',$data);
 	   }
 	   
+	   /*mi version
 	   public function validar_login(){
 		   $data=array(
 				'login'=>$this->input->post('login'),
@@ -28,7 +29,20 @@
 		   );
 		   $query = $this->db->get_where('USUARIO',array('LOGIN'=>$data['login'],'PASS'=>$data['pass']));
 		   return $query->row_array();
-	   }
+	   }*/
 	   
+	   public function login(){
+			$data=array(
+				'login'=>$this->input->post('login'),
+				'password'=>$this->input->post('password')
+			);
+			$query = $this->db->get_where('USUARIO',array('LOGIN'=>$data['login'],'PASS'=>$data['password']));
+			if($query->row_array()){
+				return true;
+			}
+						echo "<h1>FALSE</h1>";
+			return false;
+
+	   }	   
 	   
    }
