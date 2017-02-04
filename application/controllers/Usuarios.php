@@ -4,6 +4,7 @@
 			parent::__construct();
 			$this->load->model('usuarios_model');
 			$this->load->helper('url_helper');
+			$this->load->helper('url');
 		}
 		
 		//sirve la pagina principal de productos
@@ -72,5 +73,16 @@
 						}*/
 			}
 		}
+		
+		public function login_endpoint(){
+			if ($this->input->post('login') && $this->input->post('password')){
+				$login=$this->usuarios_model->login();
+				$data = array ("login"=>$login);
+				//1a forma de json  echo "{login:$login}";
+				header('Content-Type: application/json');  //evita que se renderize y trate de mostrarse en el navegador
+				echo json_encode($data);
+			}
+		}
+		
 		
 	}
