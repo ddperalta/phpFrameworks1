@@ -30,8 +30,7 @@ class Usuarios_model extends CI_Model {
       'password' => $this->input->post('password')
     );
     $query = $this->db->get_where('usuarios', array('login'=>$data['login'], 'password' => $data['password']));
-
-    if ($query->num_rows == 1) {
+    if ($query->row_array()) {
       return true;
     }
     return false;

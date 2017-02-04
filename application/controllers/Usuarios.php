@@ -4,6 +4,8 @@ class Usuarios extends CI_Controller {
     parent::__construct();
     $this->load->model('usuarios_model');
     $this->load->helper('url_helper');
+    $this->load->helper('url');
+
   }
 
   // Sirve la página principal de usuarios
@@ -67,19 +69,23 @@ class Usuarios extends CI_Controller {
     if ($this->form_validation->run() === FALSE) {
 		$this->load->view('elements/header', $data);
 		$this->load->view('usuarios/login');
+		$this->load->view('elements/scripts');
 		$this->load->view('elements/footer');
     } else {
     	$login = $this->usuarios_model->login();
     	var_dump($login);
-    }
-  	// 1 Modelo - INPUT: Usuario y contraseña
-  	//            OUTPUT: verdadero/falso ---- OK ✅ 
-  	// 2 Vista -  Campos Usuario y Password
-    //			  Formulario 
-    // 3 Controlador - Mandar llamar la vista del login
-    //				 - Cuando traiga datos y llame al modelo
-    // 				 - Aviso
-    //				 - Redireccione 
+    } 
+  }
+
+  public function login_endpoint() {
+  	header('Content-Type: application/json');
+  	if ($this->input->post('login') && 
+  		$this->input->post('password')) {
+  		$login = $this->usuarios_model->login();
+  		$data = array("login" => $login);
+
+  		echo json_encode($data);
+  	}
   }
 
 }
