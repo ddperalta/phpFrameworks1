@@ -52,6 +52,53 @@ class Usuarios extends CI_Controller {
       $this->load->view('elements/header', $data);
       $this->load->view('usuarios/success');
       $this->load->view('elements/footer');
-    }
+  	}
   }
+  public function login() {
+    $this->load->helper('form');
+    $this->load->library('form_validation');
+
+  	$data = [];
+    $data['title'] = 'Inicia sesión';
+
+    $this->form_validation->set_rules('login', 'login', 'required');
+    $this->form_validation->set_rules('password', 'password', 'required');
+
+    if ($this->form_validation->run() === FALSE) {
+		$this->load->view('elements/header', $data);
+		$this->load->view('usuarios/login');
+		$this->load->view('elements/footer');
+    } else {
+    	$login = $this->usuarios_model->login();
+    	var_dump($login);
+    }
+  	// 1 Modelo - INPUT: Usuario y contraseña
+  	//            OUTPUT: verdadero/falso ---- OK ✅ 
+  	// 2 Vista -  Campos Usuario y Password
+    //			  Formulario 
+    // 3 Controlador - Mandar llamar la vista del login
+    //				 - Cuando traiga datos y llame al modelo
+    // 				 - Aviso
+    //				 - Redireccione 
+  }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
