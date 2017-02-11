@@ -21,3 +21,12 @@ CREATE TABLE perfil(
 
    FOREIGN KEY(id_usuario) REFERENCES usuarios(id)
 );
+
+CREATE TABLE articulos(
+   id INTEGER  PRIMARY KEY  AUTOINCREMENT,
+   id_autor INTEGER,
+   titulo TEXT,
+   cuerpo TEXT,
+
+   FOREIGN KEY(id_autor) REFERENCES usuarios(id)
+);

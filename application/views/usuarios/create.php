@@ -12,7 +12,7 @@
     <input type="input" name="login" placeholder="login">
 
     <label for="password">Password</label>
-    <textarea name="password"></textarea>
+    <input name="password" type="password"></input>
 
     <button type="submit" class="pure-button pure-button-primary">Crear usuario</button>
   </fieldset>
