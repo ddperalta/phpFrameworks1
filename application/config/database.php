@@ -74,7 +74,7 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'dsn'	=> 'sqlite:/Users/davidperaltamiranda/test',
+	'dsn'	=> 'sqlite:C:/xampp/curso',
 	'hostname' => 'localhost',
 	'username' => '',
 	'password' => '',

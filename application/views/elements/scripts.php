@@ -17,7 +17,7 @@
 					if(result.login) {
 						$(location).attr('href', '/productos');
 					} else {
-						alert("Usuario o password incorrectos");
+						alert("Usuario o password incorrectossssssss");
 					}
 				}
 
@@ -25,6 +25,4 @@
 			/// ES6, Babel 
 		  });	
 		});
-		
-
 	</script>

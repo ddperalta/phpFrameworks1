@@ -7,11 +7,11 @@ class Usuarios_model extends CI_Model {
 
   public function get_usuarios($id = FALSE) {
     if ($id === FALSE) {
-      $query = $this->db->get('usuarios'); // Lee todos los registros de la tabla
+      $query = $this->db->get('USUARIO'); // Lee todos los registros de la tabla
       return $query->result_array();
     }
 
-    $query = $this->db->get_where('usuarios', array('id' => $id));
+    $query = $this->db->get_where('USUARIO', array('id' => $id));
     return $query->row_array(); // regresa un registro
   }
 
@@ -21,7 +21,7 @@ class Usuarios_model extends CI_Model {
       'password' => $this->input->post('password')
     );
 
-    return $this->db->insert('usuarios', $data);
+    return $this->db->insert('USUARIO	', $data);
   }
 
   public function login() {
@@ -29,7 +29,7 @@ class Usuarios_model extends CI_Model {
       'login' => $this->input->post('login'),
       'password' => $this->input->post('password')
     );
-    $query = $this->db->get_where('usuarios', array('login'=>$data['login'], 'password' => $data['password']));
+    $query = $this->db->get_where('USUARIO', array('login'=>$data['login'], 'PASS' => $data['password']));
     if ($query->row_array()) {
       return true;
     }
