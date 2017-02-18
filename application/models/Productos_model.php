@@ -7,8 +7,21 @@ class Productos_model extends CI_Model {
 
   public function get_productos($id = FALSE) {
     if ($id === FALSE) {
-      $query = $this->db->get('productos'); // Lee todos los registros de la tabla
+      $query2 = $this->db->get('productos'); // Lee todos los registros de la tabla
+			 //$this->db->select('productos');
+
+			 $detailsData=$this->session->userdata('detailsData');
+			 //var_dump($detailsData);
+			 $dato = array();
+			 foreach($detailsData as $key){
+				 $dato[]=$key;
+			 }
+			 //var_dump($dato);
+			 $this->db->where_in('id',$dato);
+			 $query = $this->db->get('productos');
+			 //var_dump($query->result_array());
       return $query->result_array();
+	  
     }
 
     $query = $this->db->get_where('productos', array('id' => $id));
@@ -21,7 +34,11 @@ class Productos_model extends CI_Model {
       'descripcion' => $this->input->post('descripcion'),
       'precio' => $this->input->post('precio')
     );
-
-    return $this->db->insert('productos', $data);
+    //return $this->db->insert('productos', $data);
+	$this->db->insert('productos', $data);
+	
+	$this->db->select_max('id','id');
+    $query =$this->db->get('productos');
+	return $query;
   }
 }

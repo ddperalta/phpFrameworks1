@@ -10,7 +10,7 @@ class Productos extends CI_Controller {
   // localhost/productos
   public function index() {
     $data['productos'] = $this->productos_model->get_productos();
-    $data['title'] = 'Productos';
+    $data['title'] = 'Productos Prin';
 
     $this->load->view('elements/header', $data);
     $this->load->view('productos/index', $data);
@@ -49,8 +49,18 @@ class Productos extends CI_Controller {
       $this->load->view('elements/footer');
     } else {
       // Guarda los datos usando el modelo
-      $this->productos_model->set_productos();
-      $this->load->view('elements/header', $data);
+      $resul=$this->productos_model->set_productos();
+      $row = $resul->result_array();
+	  //$max['id'] = $row[0]['id'];
+	  //echo '<pre>'+var_dump($max)+'</pre>';
+	  
+	  $detailsData    =   $this->session->userdata('detailsData');
+	  $detailsData[$this->session->contador]= $row[0]['id'];
+	  $this->session->set_userdata('detailsData', $detailsData);
+
+	  $this->session->contador=$this->session->contador+1;
+      
+	  $this->load->view('elements/header', $data);
       $this->load->view('productos/success');
       $this->load->view('elements/footer');
     }

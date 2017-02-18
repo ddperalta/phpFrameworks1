@@ -15,7 +15,7 @@
 				success: function(result) {
 					console.log(result);
 					if(result.login) {
-						$(location).attr('href', '/productos');
+						$(location).attr('href', '/productos/create');
 					} else {
 						alert("Usuario o password incorrectossssssss");
 					}

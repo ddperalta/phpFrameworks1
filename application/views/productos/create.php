@@ -1,6 +1,6 @@
 <h2><?php echo $title ?></h2>
 
-<?php echo validation_errors(); ?>
+<?php echo validation_errors();var_dump($this->session->contador); ?>
 
 <?php $attributes = array('class' => 'pure-form pure-form-stacked'); ?>
 
